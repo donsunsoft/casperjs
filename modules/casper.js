@@ -1339,8 +1339,9 @@ Casper.prototype.log = function log(message, level, space) {
     if (level in this.logFormats && utils.isFunction(this.logFormats[level])) {
         message = this.logFormats[level](message, level, space);
     } else {
-        message = f('%s [%s] %s',
+        message = f('%s [%s] [%s] %s',
                     this.colorizer.colorize(f('[%s]', level), this.logStyles[level]),
+                    new Date().toString(),
                     space,
                     message);
     }
